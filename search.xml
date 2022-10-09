@@ -11,6 +11,12 @@
         <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="为什么我的笔记里图片加载不出来"><a href="#为什么我的笔记里图片加载不出来" class="headerlink" title="为什么我的笔记里图片加载不出来?"></a>为什么我的笔记里图片加载不出来?</h2><blockquote><p>众所周知,typora默认情况下图片是保存在本地的,这就导致导出markdown文件后在网上或者在另一台电脑查看时,图片可能就加载不出来,这时候就需要配置一个图床了,把图片上传到云端。</p><p>然后在网上查看时，图片就变成了这样：</p><p><img src="https://power-image-uploader.oss-cn-guangzhou.aliyuncs.com/typora/image-20221009210929663.png" alt="image-20221009210929663"></p></blockquote><p>这是因为gitee配置了<code>防盗链</code>，简单来说，就是会检测http请求的refer字段，如果有refer字段并且值不为gitee.com,gitee服务器就不会返回对应图片资源,我们就看不到图片了。</p><p><img src="https://power-image-uploader.oss-cn-guangzhou.aliyuncs.com/typora/image-20221009211233006.png" alt="image-20221009211233006"></p><p>这个Refer字段,是浏览器自动加上的,某些浏览器插件可以伪造,使用爬虫也可以手动修改.</p><blockquote><p>为什么要使用防盗链?假如<a href="http://www.a.com有一张图片资源,b网站的page.html引用了这一资源/">www.a.com有一张图片资源,B网站的page.html引用了这一资源</a></p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;https://www.a.com/img.png&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure><p>这时候某个用户点进了page.html,由于请求头的refer为<a href="http://www.b.com,那么他将无法看到这一图片/">www.b.com,那么他将无法看到这一图片</a></p><p>于是,A网站通过防盗链阻止了B网站盗取图片,保护了自己的成果</p></blockquote><p>如果我们在浏览器直接输入需要请求的图片url <code>https://gitee.com/****/*.png</code>,浏览器不会加上refer字段</p><p>如果通过自己的gitee仓库访问这张图片,refer为gitee.com,同样放行.</p><h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案:"></a>解决方案:</h2><p>&#x3D;&#x3D;使用没有防盗链的图床。&#x3D;&#x3D;</p><p>这里推荐一手阿里云OSS，不过要钱。小访问量套餐4.98半年足够用了</p><p>或者腾讯云CSS，github都是不错的选择。</p><p>具体教程搜索 typora配置阿里云图床（更新ing。。。）</p>]]></content>
       
       
+      <categories>
+          
+          <category> typora </category>
+          
+      </categories>
+      
       
     </entry>
     
